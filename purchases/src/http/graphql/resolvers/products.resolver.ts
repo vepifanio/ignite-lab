@@ -1,12 +1,11 @@
 import { UseGuards } from '@nestjs/common';
 import { AuthorizationGuard } from 'src/http/auth/authorization.guard';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { PrismaService } from 'src/database/prisma/prisma.service';
-import { Product } from '../models/products';
+import { Product } from '../models/product';
 import { ProductsService } from 'src/services/products.service';
 import { CreateProductInput } from '../inputs/create-product-input';
 
-@Resolver()
+@Resolver(() => Product)
 export class ProductsResolver {
   constructor(private productsService: ProductsService) {}
 
